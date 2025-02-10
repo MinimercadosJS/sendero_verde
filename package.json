@@ -1,0 +1,49 @@
+{
+  "name": "minimarket-e-commerce",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@reduxjs/toolkit": "^2.5.1",
+    "axios": "^1.7.9",
+    "cloudinary": "^2.5.1",
+    "lottie-react": "^2.4.1",
+    "luxon": "^3.5.0",
+    "mongodb": "^6.12.0",
+    "next": "15.1.6",
+    "next-cloudinary": "^6.16.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.4.0",
+    "react-redux": "^9.2.0",
+    "usehooks-ts": "^3.1.0",
+    "yup": "^1.6.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "postcss": "^8",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "usehooks-ts": {
+      "react": "19.0.0"
+    }
+  }
+}
