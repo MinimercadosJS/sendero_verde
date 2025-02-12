@@ -24,7 +24,7 @@ export default function Home() {
       <ProductsSlider title="Mecato" category="mecato" />
       <ProductsSlider title="Aseo del hogar" category="aseo" />
       <ProductsSlider title="Cuidado e higiene" category="cuidado e higiene" />
-      <ProductsSlider title="Higiene personal" category="mascotas" />
+      <ProductsSlider title="Mascotas" category="mascotas" />
       <ProductsSlider title="Licores" category="licor" />
     </div>
   );
