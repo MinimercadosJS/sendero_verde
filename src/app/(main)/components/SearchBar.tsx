@@ -7,6 +7,7 @@ import { useDebounceValue } from "usehooks-ts"
 import { formatPrice } from "@/utils/functions"
 import { IoIosClose, IoIosSearch } from "react-icons/io"
 import ProductDialogCard from "./ProductDialogCard"
+import clsx from "clsx"
 
 const SearchBar = () => {
     const [results, setResults] = useState<Product[]>([])
@@ -14,6 +15,7 @@ const SearchBar = () => {
     const [loading, setLoading] = useState(false)
     const input = useRef<HTMLInputElement>(null)
     const [inputValue, setInputValue] = useState<string>("")
+    const [animate, setAnimate] = useState(false)
 
     useEffect(() => {
         
@@ -30,6 +32,10 @@ const SearchBar = () => {
 
         };
         fetchResults();
+        setAnimate(true);
+        setTimeout(() => {
+            setAnimate(false);
+        },500)
     }, [query]);
 
 
@@ -41,7 +47,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div className="bg-white relative flex flex-row grow max-w-xl z-50 rounded-full border-gray-200 border-2 py-2">
+        <div id="searchbar" className={clsx(" bg-white relative flex flex-row grow max-w-xl z-50 rounded-full border-gray-200 border-2 py-2", animate && "animate-searchbar")} >
             <input
                 className="w-full outline-hidden px-5 bg-transparent text-2xl"
                 placeholder="Buscar producto"

@@ -11,8 +11,8 @@ const CategorySelector = ({ category }: { category: Category }) => {
         <IoIosArrowDown className="transition duration-200 group-focus:rotate-180" />
         <span>{camelCaseToTitleCase(category)}</span>
       </button>
-      <div className="absolute inset-0 hidden peer-focus:block"></div>
-        <ul className="w-full absolute z-50 max-h-0 overflow-y-scroll bg-white text-left text-lg shadow-md transition-[max-height_1s_ease-in-out] peer-focus:max-h-[30rem] lg:hover:max-h-[30rem]">
+      <div className="absolute hidden peer-focus:block "></div>
+        <ul className="w-full min-w-48 absolute z-50 max-h-0 overflow-y-scroll bg-white text-left text-lg shadow-md transition-[max-height_1s_ease-in-out] peer-focus:max-h-[30rem] lg:hover:max-h-[30rem]">
           {categories.map((category, key) => (
             <li
               key={key}
