@@ -4,6 +4,7 @@ import { customerMiddleware } from './middleware/customer';
 import { adminMiddleware } from './middleware/admin';
 
 export function middleware(request: NextRequest) {
+
   const pathname = request.nextUrl.pathname;
 
   // For API routes, check for API authentication

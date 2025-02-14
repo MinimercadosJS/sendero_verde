@@ -129,6 +129,7 @@ const subcategories: { [K in Category]: readonly string[]; } = {
     'productos de limpieza', // Incluye jabones, lavaloza, cloro, detergente, desinfectantes, etc.
     'utensilios de limpieza', // Incluye trapeadores, escobas, recogedores, guantes, esponjas
     'ambientadores',
+    'cuidado de ropa',
     'bolsas de basura',
     'otros'
   ] as const,

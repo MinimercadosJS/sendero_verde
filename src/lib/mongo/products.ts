@@ -61,7 +61,7 @@ export async function querySearch(query: string) {
                     }
                 }
             }
-        ]).project({ _id: 0 }).limit(15).toArray();
+        ]).project({ _id: 0 }).sort({category: 1, subcategory: 1, name: 1}).limit(15).toArray();
 
         return result
     } catch (error: any) {
@@ -151,7 +151,7 @@ export async function getProductsByCategory(category: Category) {
 
     try {
         await init()
-        const result = await products.find({ category }, { projection: { _id: 0 } }).sort({ subcategory: 1, brand: 1, measure: 1, name: 1 }).toArray();
+        const result = await products.find({ category }, { projection: { _id: 0 } }).sort({ subcategory: 1, name: 1,  measure: 1, }).toArray();
         return result
     } catch (error: any) {
         throw new Error(error)
