@@ -8,6 +8,7 @@ import { formatPrice } from "@/utils/functions"
 import { IoIosClose, IoIosSearch } from "react-icons/io"
 import ProductDialogCard from "./ProductDialogCard"
 import clsx from "clsx"
+import Link from "next/link"
 
 const SearchBar = () => {
     const [results, setResults] = useState<Product[]>([])
@@ -61,6 +62,11 @@ const SearchBar = () => {
                     {results.map((result) => (
                         <ProductListItem key={result.barcode} product={result} />
                     ))}
+                    <li className="bg-white">
+                        <Link href={`/buscar?query=${query}`}>
+                            <span className="text-center block text-blue-600 py-3">Ver más resultados</span>
+                        </Link>
+                    </li>
                 </ul>
             }
             {
@@ -87,7 +93,7 @@ const SearchBar = () => {
 const ProductListItem = ({ product }: { product: Product }) => {
     const { name, brand, measure, price, image, stockStatus } = product;
     return (
-        <li className="relative max-w-full w-full odd:bg-gray-100 even:bg-gray-50">
+        <li className="relative max-w-full w-full odd:bg-slate-100 even:bg-slate-50">
             {stockStatus !== 'out' && <ProductDialogCard product={product} />}
             <ProductDialogCard product={product} />
             <div className="flex size-full items-center">

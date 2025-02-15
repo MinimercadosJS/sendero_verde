@@ -176,7 +176,7 @@ const productFiller: Product = {
   measure: '',
   category: 'otra',
   brand: '',
-  stockStatus: 'out',
+  stockStatus: 'available',
   subcategory: '',
   tags: [],
 }

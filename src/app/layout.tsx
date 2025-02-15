@@ -9,8 +9,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Minimarket E-commerce",
-  description: "Minimarket E-commerce",
+  title: "Sendero Verde e-market",
+  description: "Busca online productos de calidad y haz tus compras desde la comodidad de tu hogar.",
+  category: "e-commerce",
 };
 
 export default function RootLayout({

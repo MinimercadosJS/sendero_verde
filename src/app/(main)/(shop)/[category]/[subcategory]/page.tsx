@@ -49,7 +49,7 @@ const page = async ({
   );
 
   return (
-    <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] place-items-center gap-5 p-2 py-24">
+    <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] place-items-center gap-5 p-2 py-10">
       {products &&
         Array.isArray(products) &&
         products.map((product, key) => (
