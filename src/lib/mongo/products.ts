@@ -31,7 +31,7 @@ export async function init() {
     await init()
 })
 
-export async function querySearch(query: string) {
+export async function querySearch(query: string, limit: number = 15) {
     try {
         if (query.length < 3) return []
         await init()
@@ -54,14 +54,14 @@ export async function querySearch(query: string) {
                                 text: {
                                     query: query,
                                     path: "name",
-                                    score: { boost: { value: 2 } } // Increase the score for exact matches
+                                    score: { boost: { value: 3 } } // Increase the score for exact matches
                                 }
                             }
                         ]
                     }
                 }
             }
-        ]).project({ _id: 0 }).sort({category: 1, subcategory: 1, name: 1}).limit(15).toArray();
+        ]).project({ _id: 0 }).limit(limit).toArray();
 
         return result
     } catch (error: any) {

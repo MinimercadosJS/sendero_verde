@@ -4,7 +4,7 @@ import { formatPrice } from "@/utils/functions";
 import ProductImage from "@/components/ProductImage";
 
 const ProductCard = ({ product }: { product: Product }) => {
-  const { name, image, measure, price, stockStatus } = product;
+  const { name, image, measure, price, stockStatus , brand} = product;
 
   const labelPrice = formatPrice(price);
   return (
@@ -14,6 +14,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="w-full">
           <ProductImage src={image} alt={name} />
         </div>
+        <span className="text-xs text-slate-500">{brand}</span>
         <h3 className="my-2 line-clamp-2 font-medium leading-4 tracking-wide h-8">
           {name}
         </h3>
