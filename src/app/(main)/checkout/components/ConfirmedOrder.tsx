@@ -37,9 +37,9 @@ const ConfirmedOrder = ({ order }: { order: Order | null }) => {
                             <div className='flex flex-col items-center max-w-32 text-center text-xs gap-1'>
                                 <span >Contáctenos </span>
 
-                                <Link href="http://api.whatsapp.com/send?phone=573145328229&text=quieroalgo" className='flex flex-col items-center'>
+                                <Link href="http://api.whatsapp.com/send?phone=573025287020&text=quieroalgo" className='flex flex-col items-center'>
                                     <WhatsappIcon className='text-3xl' />
-                                    <span>312 345 7890</span>
+                                    <span>302 5287020</span>
                                 </Link>
                             </div>
                         </div>
