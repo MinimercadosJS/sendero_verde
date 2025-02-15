@@ -1,84 +1,113 @@
-import { Order } from '@/model/order'
-import React from 'react'
-import ProductImage from '@/components/ProductImage'
-import { formatPrice } from '@/utils/functions'
-import { WhatsappIcon } from '@/assets/icons/whatsappLogo'
-import Link from 'next/link'
+import { Order } from "@/model/order";
+import React from "react";
+import ProductImage from "@/components/ProductImage";
+import { formatPrice } from "@/utils/functions";
+import { WhatsappIcon } from "@/assets/icons/whatsappLogo";
+import Link from "next/link";
+import BancolombiaLogo from "@/assets/icons/BancolombiaLogo";
 
 const ConfirmedOrder = ({ order }: { order: Order | null }) => {
-    const estado = {
-        pending: "Tu pedido esta siendo preparado...",
-        packed: "Tu pedido está en camino...",
-        delivered: "Tu pedido ha sido entregado",
-      };
-    return (
-        <>
-            {
-                order && <div className='w-full flex flex-col items-center justify-center pb-24'>
-                    <div className="text-center font-light my-10 text-xl">
-                        <h1>Gracia por tu compra </h1>
-                        <span className='text-blue-500'>{estado[order.status]}</span>
+  const estado = {
+    pending: "Tu pedido esta siendo preparado...",
+    packed: "Tu pedido está en camino...",
+    delivered: "Tu pedido ha sido entregado",
+  };
+  return (
+    <>
+      {order && (
+        <div className="flex w-full flex-col items-center justify-center pb-24">
+          <div className="my-10 text-center text-xl font-light">
+            <h1>Gracia por tu compra </h1>
+            <span className="text-blue-500">{estado[order.status]}</span>
+          </div>
+
+          <div className="px-3 *:my-5">
+            <h2 className="my-1 text-center text-gray-400">Resumen del pedido</h2>
+            <h3 className="text-center text-2xl">
+              Total: <b>{formatPrice(order.subtotal + order.deliveryFee)}</b>
+            </h3> 
+
+            <div className="my-5 flex flex-col gap-5 py-10">
+              <Link
+                href="http://api.whatsapp.com/send?phone=573025287020"
+                className="flex flex-row items-center gap-10"
+              >
+                <WhatsappIcon className="text-5xl" />
+                <span className="font-semibold">302 5287020</span>
+              </Link>
+              <figure className="flex flex-row gap-10 text-5xl">
+                <BancolombiaLogo />
+                <p className="flex flex-col gap-2">
+                  <span className="text-base">Ahorros Bancolombia:</span>
+                  <span className="text-base font-semibold tracking-wider">
+                    420 53959 894
+                  </span>
+                </p>
+              </figure>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-3">
+                <span>
+                  Cliente: <b>{order.customerName}</b>
+                </span>
+                <div className="flex gap-5">
+                  <span>
+                    T: <b>{order.deliveryAddress.building}</b>
+                  </span>
+                  <span>
+                    Apto: <b>{order.deliveryAddress.apartment}</b>
+                  </span>
+                </div>
+                <span>
+                  Teléfono: <b>{order.customerPhone}</b>
+                </span>
+              </div>
+            </div>
+
+            <ul className="">
+              {order.products.map((product) => (
+                <li
+                  key={product.barcode}
+                  className="flex items-center justify-between gap-5 border-b-2 border-gray-300 py-1 first:border-t-2"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-16">
+                      <ProductImage src={product.image} alt={product.name} />
                     </div>
-
-                    <div className='px-3 *:my-5'>
-                        <h2 className='text-center my-1'>Resumen del pedido</h2>
-                        <h3 className='text-center'>Total: <b>{formatPrice(order.subtotal + order.deliveryFee)}</b></h3>
-                        <div className='flex items-center justify-between'>
-
-                            <div className='flex flex-col gap-3'>
-
-                                <span>Cliente: <b>{order.customerName}</b></span>
-                                <div className='flex gap-5'>
-                                    <span>T: <b>{order.deliveryAddress.building}</b></span>
-                                    <span>Apto: <b>{order.deliveryAddress.apartment}</b></span>
-                                </div>
-                                <span>Teléfono: <b>{order.customerPhone}</b></span>
-                            </div>
-                            <div className='flex flex-col items-center max-w-32 text-center text-xs gap-1'>
-                                <span >Contáctenos </span>
-
-                                <Link href="http://api.whatsapp.com/send?phone=573025287020&text=quieroalgo" className='flex flex-col items-center'>
-                                    <WhatsappIcon className='text-3xl' />
-                                    <span>302 5287020</span>
-                                </Link>
-                            </div>
-                        </div>
-
-                        <ul className=''>
-                            {
-                                order.products.map((product) => (
-                                    <li key={product.barcode} className='flex gap-5 items-center py-1 border-b-2 first:border-t-2 border-gray-300  justify-between'>
-
-                                        <div className='flex gap-4 items-center'>
-                                            <div className='w-16'>
-                                                <ProductImage src={product.image} alt={product.name} />
-                                            </div>
-                                            <div className='flex flex-col items-start text-left'>
-                                                <span className='leading-4'>{product.name}</span>
-                                                <span className='text-xs mt-2'>{formatPrice(product.unitPrice)} c/u
-                                                    <b className='mx-2'> {formatPrice(product.totalPrice)}</b></span>
-                                            </div>
-                                        </div>
-                                        <div className='bg-green-500 w-7 text-center rounded-full text-white'>
-                                            <span className='text-xl font-mono'>{product.quantity}</span>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                    <div className="flex flex-col items-start text-left">
+                      <span className="leading-4">{product.name}</span>
+                      <span className="mt-2 text-xs">
+                        {formatPrice(product.unitPrice)} c/u
+                        <b className="mx-2">
+                          {" "}
+                          {formatPrice(product.totalPrice)}
+                        </b>
+                      </span>
                     </div>
-                </div >
-            }
-        </>
-
-    )
-}
+                  </div>
+                  <div className="w-7 rounded-full bg-green-500 text-center text-white">
+                    <span className="font-mono text-xl">
+                      {product.quantity}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 const BackHomeButton = () => {
-    return (
-        <Link href='/' className=''>
-            <button className='bg-blue-500 px-5 py-2 rounded-full text-xl text-white'>Volver al inicio</button>
-        </Link>
-    )
-}
+  return (
+    <Link href="/" className="">
+      <button className="rounded-full bg-blue-500 px-5 py-2 text-xl text-white">
+        Volver al inicio
+      </button>
+    </Link>
+  );
+};
 
-export default ConfirmedOrder
+export default ConfirmedOrder;
