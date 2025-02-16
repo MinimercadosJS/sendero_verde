@@ -62,11 +62,11 @@ const SearchBar = () => {
                     {results.map((result) => (
                         <ProductListItem key={result.barcode} product={result} />
                     ))}
-                    <li className="bg-white">
-                        <Link href={`/buscar?query=${query}`}>
+                  { results.length >= 15 && <li className="bg-white">
+                        <Link href={`/buscar?query=${query}`} onClick={()=> resetSearch()}>
                             <span className="text-center block text-blue-600 py-3">Ver más resultados</span>
                         </Link>
-                    </li>
+                    </li>}
                 </ul>
             }
             {
