@@ -23,7 +23,7 @@ const OrderInProgress = () => {
   return (
     <>
       {orders.length > 0 && (
-        <div className="relative z-10 select-none rounded-full bg-green-200 p-1 text-5xl text-green-800">
+        <div className="relative z-50 select-none rounded-full bg-green-200 p-1 text-5xl text-green-800">
           <div className="absolute left-0 aspect-square w-5 rounded-full bg-blue-600 text-center font-mono text-sm text-white">
             {orders.length}
           </div>
