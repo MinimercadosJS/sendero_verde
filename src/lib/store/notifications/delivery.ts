@@ -3,7 +3,7 @@ import { DeliveryAddress } from "@/model/order";
 import { toTitleCase } from "@/utils/functions";
 import axios from "axios";
 
-export async function sendNewOrderNotification(address: DeliveryAddress) {
+export async function sendNewOrderNotification(address: DeliveryAddress, orderId: string) {
     const { apartment, building, unit } = address
 
     try {
@@ -15,9 +15,11 @@ export async function sendNewOrderNotification(address: DeliveryAddress) {
                     "to": token,
                     "title": `Nuevo pedido a ${toTitleCase(unit)}`,
                     "body": `Apto ${apartment}  Torre ${building}`,
-
+                    "data" : {
+                        "order_id": orderId
+                    }
                 }
-            )
+            )   
         }
 
     } catch (error: any) {
