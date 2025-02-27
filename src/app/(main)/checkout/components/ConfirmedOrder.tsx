@@ -25,7 +25,12 @@ const ConfirmedOrder = ({ order }: { order: Order | null }) => {
             <h2 className="my-1 text-center text-gray-400">Resumen del pedido</h2>
             <h3 className="text-center text-2xl">
               Total: <b>{formatPrice(order.subtotal + order.deliveryFee)}</b>
-            </h3> 
+            </h3>
+
+            <p className="px-10 flex flex-col">
+              <span >Los precios y disponibilidad de los productos pueden estar sujetos a cambios. </span>
+              <span className="font-semibold">Confirma con el domiciliario tu pedido.D </span>
+            </p>
 
             <div className="my-5 flex flex-col gap-5 py-10">
               <Link
