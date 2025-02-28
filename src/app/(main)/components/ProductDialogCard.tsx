@@ -83,7 +83,7 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
           className="absolute right-0 -translate-y-6 translate-x-6 fill-white text-3xl"
         />
 
-        <div className="flex size-full flex-col overflow-hidden rounded-lg px-2 shadow-lg">
+        <div className="flex w-[16rem] h-min flex-col overflow-hidden rounded-lg px-2 shadow-lg">
           <div className="-z-10">
             { quantity && quantity > 0 &&
             <div className="fixed rounded-b-md bg-green-600 px-3 text-center text-white z-10">
