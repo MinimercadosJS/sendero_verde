@@ -61,7 +61,7 @@ const Basket = () => {
           className="fixed bottom-0 right-0 m-3 flex items-center gap-3 rounded-full bg-white p-2 font-semibold shadow-md"
         >
           <IoIosArrowBack className="text-xl" />
-          <span>Seguir comprando</span>
+          <span>Ir a inicio</span>
         </Link>
       )}
     </>

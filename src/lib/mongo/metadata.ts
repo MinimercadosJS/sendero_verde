@@ -39,4 +39,5 @@ async function setDeliveryPushToken(token: string) {
     await init()
     return await metadata.updateOne({}, { $addToSet: { "delivery.pushTokens": token } })
 }
+
 export { getDeliveryPushTokens, setDeliveryPushToken }

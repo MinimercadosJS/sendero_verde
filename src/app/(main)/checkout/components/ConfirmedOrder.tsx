@@ -16,8 +16,8 @@ const ConfirmedOrder = ({ order }: { order: Order | null }) => {
     <>
       {order && (
         <div className="flex w-full flex-col items-center justify-center pb-24">
-          <div className="my-10 text-center text-xl font-light">
-            <h1>Gracia por tu compra </h1>
+          <div className="my-10 text-center text-2xl font-light">
+            <h1>Gracias por tu compra </h1>
             <span className="text-blue-500">{estado[order.status]}</span>
           </div>
 
@@ -27,9 +27,9 @@ const ConfirmedOrder = ({ order }: { order: Order | null }) => {
               Total: <b>{formatPrice(order.subtotal + order.deliveryFee)}</b>
             </h3>
 
-            <p className="px-10 flex flex-col">
+            <p className="px-10 flex flex-col text-lg">
               <span >Los precios y disponibilidad de los productos pueden estar sujetos a cambios. </span>
-              <span className="font-semibold">Confirma con el domiciliario tu pedido.D </span>
+              <span className="font-semibold">Confirma con el domiciliario tu pedido.  </span>
             </p>
 
             <div className="my-5 flex flex-col gap-5 py-10">
