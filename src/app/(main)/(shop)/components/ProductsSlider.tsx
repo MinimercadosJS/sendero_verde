@@ -46,9 +46,9 @@ const ProductsSlider = async ({
           {Icon[category] && (
             <Link
               href={`/${toKebabCase(category)}`}
-              className="flex flex-row items-center text-green-600"
+              className="flex h-28 w-28 flex-row items-center text-green-600"
             >
-              <div className="flex h-full w-28 items-center justify-center text-xl text-gray-500">
+              <div className="flex h-28 w-28 items-center justify-center text-xl text-gray-500">
                 {Icon[category]}
               </div>
             </Link>

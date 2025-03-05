@@ -4,7 +4,7 @@ import { KeyboardEventHandler } from "react";
 import { MdCancel } from "react-icons/md";
 
 interface Props {
-  value: string[];
+  value?: string[];
   name: string;
   onChange: (value: string[]) => void;
   onBlur?: () => void;

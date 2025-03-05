@@ -12,7 +12,7 @@ export const baseProductSchema = z.object({//+
     image: z.string(),//+
     category: z.enum(categories),//+
     subcategory: z.string(),
-    tags: z.array(z.string()),
+    tags: z.array(z.string()).optional(),
     show: z.boolean().optional()
 });
 

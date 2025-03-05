@@ -48,7 +48,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div id="searchbar" className={clsx(" bg-white relative flex flex-row grow max-w-xl z-50 rounded-full border-gray-200 border-2 py-2", animate && "animate-searchbar")} >
+        <div className={clsx("h-fit bg-white relative flex flex-row grow max-w-xl z-50 rounded-full border-gray-200 border-2 py-2", animate && "animate-searchbar")} >
             <input
                 className="w-full outline-hidden px-5 bg-transparent text-2xl"
                 placeholder="Buscar producto"
@@ -58,7 +58,7 @@ const SearchBar = () => {
             />
             {
                 results.length > 0 &&
-                <ul className="fixed left-0 md:absolute translate-y-10  w-full shadow-md max-h-96 overflow-scroll" >
+                <ul className="absolute top-12 left-0 md:absolute w-full shadow-md max-h-96 overflow-scroll" >
                     {results.map((result) => (
                         <ProductListItem key={result.barcode} product={result} />
                     ))}
@@ -71,7 +71,7 @@ const SearchBar = () => {
             }
             {
                 results.length < 1 && inputValue.length > 0 && (
-                    <div className=" bg-slate-50 fixed left-0 md:absolute translate-y-10  w-full shadow-md p-4 text-center text-lg">
+                    <div className="absolute bg-slate-50 top-12 left-0 md:absolute   w-full shadow-md p-4 text-center text-lg">
                     {
                         loading ? <span>Buscando...</span> :
                         <span> Lo sentimos, no tenemos resultados para esta búsqueda</span>
