@@ -12,10 +12,7 @@ import {
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import checkoutSchema, { Checkout } from "./checkoutResolver";
 import useCart from "@/app/(main)/components/useCart";
-import {
-  camelCaseToTitleCase,
-  formatPrice,
-} from "@/utils/functions";
+import { camelCaseToTitleCase, formatPrice } from "@/utils/functions";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
 import { Order, OrderProduct } from "@/model/order";
 import { CartProduct, resetCart } from "@/lib/redux/reducers/cart";
@@ -24,6 +21,7 @@ import ConfirmedOrder from "../ConfirmedOrder";
 import { setSessionId, uploadOrder } from "@/lib/mongo/orders";
 import { addOrder } from "@/lib/redux/reducers/clientOrders";
 import { deliveryFees } from "@/utils/consts";
+import Link from "next/link";
 
 const CheckoutForm = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +41,7 @@ const CheckoutForm = () => {
 
   const validateAndUpload = async () => {
     if (!formState.isValid) return;
-    const form: Checkout = getValues()
+    const form: Checkout = getValues();
     const { name, phone, building, apto, unit } = form;
     setDeliveryFee(deliveryFees[unit]);
     const products: OrderProduct[] = convertCartToOrder(items);
@@ -176,16 +174,28 @@ const CheckoutForm = () => {
                 Siguiente
               </button>
             )}
+
             <button
               type="submit"
               style={stage >= 4 ? { opacity: 100 } : { opacity: 0 }}
               className="my-3 rounded-full bg-blue-500 px-5 py-2 text-xl text-white disabled:bg-gray-300"
               disabled={!formState.isValid || formState.isSubmitting}
               autoFocus
-              
             >
               Hacer pedido
             </button>
+            <span className="flex flex-col text-center">
+              <span>
+                Tus datos personales serán utilizados unicamente para coordinar
+                y gestionar tu orden.
+              </span>
+              <span>
+                Ver{" "}
+                <Link href="/politica-de-privacidad" className="text-blue-500">
+                  política y tratamiento de datos.
+                </Link>
+              </span>
+            </span>
           </FormProvider>
         </form>
       )}

@@ -30,7 +30,7 @@ const Basket = () => {
   }, [itemsCount]);
 
   const moveBasketToCorner =
-    pathname === "/checkout" || pathname.startsWith("/order");
+    pathname === "/checkout" || pathname.startsWith("/order") || pathname === "/politica-de-privacidad";
   return (
     <>
       <section

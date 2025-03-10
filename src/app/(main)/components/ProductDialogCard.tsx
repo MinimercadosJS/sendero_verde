@@ -8,22 +8,15 @@ import {
   CartProduct,
   removeItem,
 } from "@/lib/redux/reducers/cart";
+
 import { Product } from "@/model/product";
 import React, { MouseEventHandler, useRef, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosCloseCircleOutline } from "react-icons/io";
 
 const ProductDialogCard = ({ product }: { product: Product }) => {
-  const {
-    barcode,
-    name,
-    price,
-    image,
-    measure,
-    brand,
-    category,
-    stockStatus,
-  } = product;
+  const { barcode, name, price, image, measure, brand, category, stockStatus } =
+    product;
   const cartProduct: CartProduct = {
     barcode,
     name,
@@ -83,28 +76,28 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
           className="absolute right-0 -translate-y-6 translate-x-6 fill-white text-3xl"
         />
 
-        <div className="flex w-[16rem] h-min flex-col overflow-hidden rounded-lg px-2 shadow-lg">
+        <div className="flex h-min w-[16rem] flex-col overflow-hidden rounded-lg px-2 shadow-lg">
           <div className="-z-10">
-            { quantity && quantity > 0 &&
-            <div className="fixed rounded-b-md bg-green-600 px-3 text-center text-white z-10">
-              {`añadido${quantity > 1 ? `s: ${quantity}`: ""}`}
-            </div>
-            }
+            {quantity && quantity > 0 && (
+              <div className="fixed z-10 rounded-b-md bg-green-600 px-3 text-center text-white">
+                {`añadido${quantity > 1 ? `s: ${quantity}` : ""}`}
+              </div>
+            )}
             <div className="p-5">
               <ProductImage src={image} alt={name} />
             </div>
             <div className="mb-3">
-              <span className="line-clamp-3 mb-1 text-lg font-medium leading-6 text-slate-800">
+              <span className="mb-1 line-clamp-3 text-lg leading-6 font-medium text-slate-800">
                 {name}
               </span>
               <span className="text-slate-500">{brand}</span>
             </div>
             <div className="flex justify-between">
-              <span className="-z-10 text-md text-slate-500 outline-hidden">
+              <span className="text-md -z-10 text-slate-500 outline-hidden">
                 {measure}
               </span>
 
-              <span className="text-nowrap font-semibold text-slate-600">
+              <span className="font-semibold text-nowrap text-slate-600">
                 {labelPrice}
               </span>
             </div>
@@ -116,7 +109,12 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
                 <span className="font-semibold text-red-600">Agotado</span>
               ) : (
                 <>
-                  <button type="button" onClick={remove} disabled={!quantity}>
+                  <button
+                    type="button"
+                    onClick={remove}
+                    disabled={!quantity}
+                    className="p-2"
+                  >
                     <FaMinus className="fill-gray-600 active:scale-75" />
                   </button>
                   <div
@@ -126,7 +124,7 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
                       {quantity || 0}
                     </span>
                   </div>
-                  <button type="button" onClick={add}>
+                  <button type="button" onClick={add} className="p-2">
                     <FaPlus className="fill-gray-600 active:scale-75" />
                   </button>
                 </>
@@ -157,7 +155,7 @@ const Description = ({ description }: { description: string }) => {
         />
       </button>
       <p
-        className="absolute right-0 top-0 -z-10 h-[calc(100%-6rem)] overflow-auto bg-white p-5"
+        className="absolute top-0 right-0 -z-10 h-[calc(100%-6rem)] overflow-auto bg-white p-5"
         style={{
           translate: `${openDescription ? "none" : "0 100%"}`,
           zIndex: `${openDescription ? "10" : "-10"}`,
