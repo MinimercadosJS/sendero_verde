@@ -1,0 +1,23 @@
+.quantity-container {
+    z-index: 10;
+    position: fixed;
+    border-bottom-right-radius: 0.5rem;
+    background-color: var(--green-600); 
+    padding-inline: 0.75rem; 
+    text-align: center;
+    color: var(--bg-white);
+}
+.productDialog {
+    /* user-select: none; */
+    overflow: visible;
+    outline: none;
+    border-radius: 0.5rem;
+    width: 16rem;
+    animation: fadeIn 0.5s;
+    margin: auto;
+    height: fit-content;
+  }
+  
+  .productDialog::backdrop {
+    background: var(--bg-blue);
+  }

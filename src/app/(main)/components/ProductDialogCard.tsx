@@ -13,7 +13,7 @@ import { Product } from "@/model/product";
 import React, { MouseEventHandler, useRef, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosCloseCircleOutline } from "react-icons/io";
-
+import './components.css';
 const ProductDialogCard = ({ product }: { product: Product }) => {
   const { barcode, name, price, image, measure, brand, category, stockStatus } =
     product;
@@ -79,7 +79,7 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
         <div className="flex h-min w-[16rem] flex-col overflow-hidden rounded-lg px-2 shadow-lg">
           <div className="-z-10">
             {quantity && quantity > 0 && (
-              <div className="fixed z-10 rounded-b-md bg-green-600 px-3 text-center text-white">
+              <div className="quantity-container">
                 {`añadido${quantity > 1 ? `s: ${quantity}` : ""}`}
               </div>
             )}

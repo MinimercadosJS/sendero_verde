@@ -6,20 +6,6 @@ dialog[open] {
   display: block !important;
 }
 
-.productDialog {
-  /* user-select: none; */
-  overflow: visible;
-  outline: none;
-  border-radius: 0.5rem;
-  width: 16rem;
-  animation: fadeIn 0.5s;
-  margin: auto;
-  height: fit-content;
-}
-
-.productDialog::backdrop {
-  background: #184ca75a;
-}
 
 @keyframes fadeIn {
   from {
