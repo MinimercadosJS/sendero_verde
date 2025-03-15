@@ -11,6 +11,7 @@ import MecatoIcon from "@/assets/icons/categories/mecato";
 import MascotasIcon from "@/assets/icons/categories/mascotas";
 import LicorIcon from "@/assets/icons/categories/licor";
 import "./components.css";
+
 const ProductsSlider = async ({
   title,
   category,

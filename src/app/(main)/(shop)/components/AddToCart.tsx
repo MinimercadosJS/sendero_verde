@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks"
 import { addProduct, CartProduct } from "@/lib/redux/reducers/cart"
 import { IoAdd } from "react-icons/io5"
 import ProductDialogCard from "../../components/ProductDialogCard"
+import "./components.css"
 
 const AddToCart = ({ product }: { product: Product }) => {
     const { name, barcode, price, brand, image, measure, category, stockStatus } = product
