@@ -34,6 +34,8 @@
     --bg-white: #ffffff;
     --bg-green-500: #22c55e;
     --bg-blue: #184ca75a; 
+    --bg-slate-50:#f8fafc;
+    --bg-slate-100:#f1f5f9;
     --blue-50: 239 246 255;
     --blue-100:#dbeafe;
     --blue-200: 191 219 254;
@@ -50,8 +52,12 @@
     --text-gray-600: #4b5563;
     --text-gray-900: #111827;
     --text-slate-500: #64748b;
-    --text-slate-600: #475569;
+    --text-slate-600: #45556c;
+    --text-slate-800: #1d293d;
     --text-red-600: #dc2626;
+    --text-blue-600: #155dfc;
+
+    --border-gray-200: #e5e7eb;
   }
 
   html {

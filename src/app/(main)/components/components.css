@@ -44,6 +44,7 @@
   font-size: 1.875rem;
   cursor: pointer;
 }
+
 .product-dialog-content {
   display: flex;
   height: min-content;
@@ -62,6 +63,7 @@
 .product-dialog-content .product-info {
   margin-bottom: 0.75rem;
 }
+
 .product-dialog-content .product-name {
   margin-bottom: 0.25rem;
   display: -webkit-box;
@@ -82,6 +84,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .product-dialog-content .product-measure {
   font-size: 1rem;
   z-index: -10;
@@ -146,10 +149,12 @@
 .product-dialog-content .product-actions .action-buttons .action-button .icon:active {
   transform: scale(0.75);
 }
-.product-dialog-content .has-quantity{
+
+.product-dialog-content .has-quantity {
   background-color: var(--bg-green-500);
 }
-.product-dialog-content .cero-quantity{
+
+.product-dialog-content .cero-quantity {
   background-color: var(--color-gray-400);
 }
 
@@ -161,6 +166,7 @@
   transition: left 0.5s ease-out;
 
 }
+
 .basket-container {
   position: relative;
   width: 100%;
@@ -168,7 +174,7 @@
   border-radius: 9999px;
   background-color: var(--blue-100);
   padding: 0.25rem;
-  font-size: 3.75rem; 
+  font-size: 3.75rem;
   color: var(--blue-900);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -176,4 +182,161 @@
 
 .basket-container.animate-basket {
   animation: basket-bounce 0.5s;
+}
+
+
+/*-------------- SearchBar -------------*/
+
+.search-bar {
+  height: fit-content;
+  background-color: var(--bg-white);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  max-width: 36rem;
+  /* max-w-xl */
+  z-index: 50;
+  border-radius: 9999px;
+  border: 2px solid var(--border-gray-200);
+  padding-block: 0.5rem;
+  /* py-2 */
+}
+
+.search-bar.animate-searchbar {
+  animation: searchbar-animation 0.5s;
+}
+
+.search-bar input {
+  width: 100%;
+  outline: none;
+  padding: 0 1.25rem;
+  /* px-5 */
+  background-color: transparent;
+  font-size: 1.5rem;
+  /* text-2xl */
+}
+
+.search-bar ul {
+  position: absolute;
+  top: 3rem;
+  /* top-12 */
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 24rem;
+  /* max-h-96 */
+  overflow-y: auto;
+}
+
+.search-bar ul .see-more {
+  background-color: var(--bg-white);
+}
+
+.search-bar ul .see-more span {
+  text-align: center;
+  display: block;
+  color: var(--text-blue-600);
+  padding-block: 0.75rem;
+}
+
+.search-bar .no-results {
+  position: absolute;
+  background-color: var(--bg-slate-50);
+  top: 3rem;
+  /* top-12 */
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  /* p-4 */
+  text-align: center;
+  font-size: 1.125rem;
+  /* text-lg */
+}
+
+.search-bar .icon {
+  font-size: 2.25rem;
+  /* text-4xl */
+  padding-inline: 0.75rem;
+  /* px-3 */
+  color: var(--text-slate-600);
+}
+
+#product-list-item {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
+
+#product-list-item:nth-child(odd) {
+  background-color: var(--bg-slate-100);
+}
+
+#product-list-item:nth-child(even) {
+  background-color: var(--bg-slate-50);
+}
+
+#product-list-item #product-info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+#product-list-item #product-info #image {
+  min-width: 4rem;
+  /* min-w-16 */
+}
+
+@media(min-width:768px) {
+  #product-list-item #product-info #image {
+    min-width: 5rem;
+    /* min-w-24 */
+  }
+}
+
+#product-list-item #product-info #details {
+
+  flex-direction: column;
+  align-items: baseline;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+#product-list-item #product-info #details > * {
+
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  
+}
+
+#product-list-item #product-info #details b {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#product-list-item #product-info #details span {
+  font-size: 0.875rem; /* text-sm */
+}
+
+#product-list-item #product-info #details #out-of-stock {
+  color: var(--text-red-600);
+  font-weight: 600; /* font-semibold */
+}
+
+#product-list-item #product-info #price {
+  margin: 0 0.5rem; /* mx-2 */
+  white-space: nowrap;
+  font-size: 0.875rem; /* text-sm */
+}
+
+@keyframes searchbar-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10%);
+  }
 }

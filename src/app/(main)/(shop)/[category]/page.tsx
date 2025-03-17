@@ -15,7 +15,7 @@ const CategoryPage = async ({
 
   return (
     <div className="w-full">
-      <section className="grid w-full grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] place-items-center gap-5 p-2 py-10 ">
+      <section className="grid w-full grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] place-items-center gap-5 p-2 py-10 cursor-pointer ">
         {products &&
           Array.isArray(products) &&
           products.map((product, key) => (

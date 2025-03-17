@@ -1,5 +1,6 @@
 .products-slider-section {
     margin: 2.5rem 0;
+    
 }
 
 .products-slider-header {
@@ -21,7 +22,8 @@
     flex-direction: row;
     align-items: center;
     color: var(--green-600);
-    /* green-600 */
+    
+    
 }
 
 .products-slider-container {
@@ -147,7 +149,8 @@
     overflow: visible;
     border-radius: 0.375rem;
     background-color: var(--bg-white);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
 }
 
 .product-card-content{
