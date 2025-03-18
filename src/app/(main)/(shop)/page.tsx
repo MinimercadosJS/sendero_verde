@@ -17,7 +17,7 @@ export default function Home() {
         <CategoryCard category="mecato"> <MecatoIcon /></CategoryCard>
         <CategoryCard category="licor"> <LicorIcon /></CategoryCard>
         <CategoryCard category="mascotas"> <MascotasIcon /></CategoryCard>
-        
+
       </div> */}
 
       {/* <CategoryCard
@@ -25,7 +25,6 @@ export default function Home() {
         children={<CanastaFamiliarIcon />}
       /> */}
       <ProductsSlider title="Alimentos básicos" category="alimentos básicos" />
-
       {/* <CategoryCard category="mecato" children={<MecatoIcon />} />  */}
       <ProductsSlider title="Mecato" category="mecato" />
       <ProductsSlider title="Bebidas" category="bebidas" />

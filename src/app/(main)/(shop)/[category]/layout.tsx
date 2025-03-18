@@ -36,7 +36,7 @@ const layout = async ({
 
   return (
     <main>
-      <div className="sticky top-0 z-30 w-full bg-stone-50 *:py-5 shadow-md">
+      <div className="sticky top-0 z-30 w-full bg-[#fafaf9] *:py-5 shadow-md">
         <div className="grid gap-2 md:gap-5 lg:gap-10 xl:gap-20 w-full grid-cols-3 place-items-center *:w-full">
           <Link
             href="/"

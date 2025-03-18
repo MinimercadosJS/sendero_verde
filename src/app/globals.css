@@ -31,17 +31,33 @@
 
 @layer utilities {
   :root {
+    --bg-white: #ffffff;
+    --bg-green-500: #22c55e;
+    --bg-blue: #184ca75a; 
+    --bg-slate-50:#f8fafc;
+    --bg-slate-100:#f1f5f9;
     --blue-50: 239 246 255;
-    --blue-100: 219 234 254;
+    --blue-100:#dbeafe;
     --blue-200: 191 219 254;
     --blue-300: 147 197 253;
     --blue-400: 96 165 250;
-    --blue-500: 59 130 246;
+    --blue-500: #3b82f6;
     --blue-600: 37 99 235;
     --blue-700: 29 78 216;
     --blue-800: 30 64 175;
-    --blue-900: 30 58 138;
+    --blue-900: #1e3a8a;
     --blue-950: 23 37 84;
+    --green-600: #16a34a;
+    --text-gray-500: #6b7280;
+    --text-gray-600: #4b5563;
+    --text-gray-900: #111827;
+    --text-slate-500: #64748b;
+    --text-slate-600: #45556c;
+    --text-slate-800: #1d293d;
+    --text-red-600: #dc2626;
+    --text-blue-600: #155dfc;
+
+    --border-gray-200: #e5e7eb;
   }
 
   html {

@@ -1,7 +1,7 @@
 import { camelCaseToTitleCase, toKebabCase } from "@/utils/functions";
 import { Category } from "@/model/product";
 import Link from "next/link";
-import clsx from "clsx";
+import "./components.css";
 
 const CategoryCard = ({
   category,
@@ -26,14 +26,11 @@ const CategoryCard = ({
   };
 
   return (
-    <Link className="flex flex-col items-center" href={`/${decodedCategory}`}>
-      <figure
-        className="aspect-square w-24 rounded-lg p-1 sm:w-20 md:w-24 *:drop-shadow-[0px_0px_2px_#ffffff]"
-        // style={{ backgroundColor: categoryColors[category] }}
-      >
+    <Link className="category-card-link" href={`/${decodedCategory}`}>
+      <figure className="category-card-figure">
         {children}
       </figure>
-      <span className="font-light sm:text-lg">
+      <span className="category-card-span">
         {camelCaseToTitleCase(category)}
       </span>
     </Link>

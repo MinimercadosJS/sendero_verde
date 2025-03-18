@@ -1,3 +1,37 @@
+.main {
+  position: relative;
+  height: 100svh;
+  width: 100vw;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-slate-800);
+  background-color: #fafaf9;
+}
+
+
+.main-container {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  height: calc(100svh - 5rem); /* h-view */
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) { /* lg */
+  .main-container {
+      flex-direction: row;
+  }
+}
+
+.content-section {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 2.5rem; /* pb-10 */
+  z-index: 0;
+}
+
 ::-webkit-scrollbar {
   scrollbar-width: none;
 }
@@ -6,20 +40,6 @@ dialog[open] {
   display: block !important;
 }
 
-.productDialog {
-  /* user-select: none; */
-  overflow: visible;
-  outline: none;
-  border-radius: 0.5rem;
-  width: 16rem;
-  animation: fadeIn 0.5s;
-  margin: auto;
-  height: fit-content;
-}
-
-.productDialog::backdrop {
-  background: #184ca75a;
-}
 
 @keyframes fadeIn {
   from {
@@ -36,6 +56,7 @@ dialog[open] {
 #products-slider {
   scrollbar-width: 10;
   scrollbar-color: rdd;
+  
 }
 
 #cartList {
