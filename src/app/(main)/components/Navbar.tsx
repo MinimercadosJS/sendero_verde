@@ -13,18 +13,18 @@ const Navbar = () => {
     const {itemsCount} = useCart()
     
     return   (
-        <nav className='relative z-10 flex'>
+        <nav className='navbar'>
             <CartList openCartList={openCartList} setOpenCartList={setOpenCartList} />
-            <div className="flex justify-between text-5xl bg-white text-gray-800 p-4 lg:p-5 lg:flex-col lg:justify-around w-full">
+            <div className="navbar-container">
                 <Link href="/favorites">
                     <MdFavoriteBorder />
                 </Link>
                 <Link href="/recent">
                     <MdOutlineHistory />
                 </Link>
-                <section className='relative' onClick={() => setOpenCartList(!openCartList)}>
-                    <div className='absolute right-0 rounded-full w-7 aspect-square bg-blue-500 grid place-items-center'>
-                        <b className='text-lg font-mono text-white'>{itemsCount}</b>
+                <section className='navbar-cart-section' onClick={() => setOpenCartList(!openCartList)}>
+                    <div className='navbar-cart-badge'>
+                        <b>{itemsCount}</b>
                     </div>
                     <BsCart4 />
                 </section>

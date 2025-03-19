@@ -118,9 +118,9 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
                     <FaMinus className="icon" />
                   </button>
                   <div
-                    className={`${quantity ? "has-quantity" : "cero-quantity"} grid aspect-square w-7 rounded-full`}
+                    className={`${quantity ? "has-quantity" : "cero-quantity"}`}
                   >
-                    <span className="place-self-center font-mono text-xl font-semibold text-white">
+                    <span>
                       {quantity || 0}
                     </span>
                   </div>
