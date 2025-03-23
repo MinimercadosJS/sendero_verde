@@ -115,7 +115,7 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
                     disabled={!quantity}
                     className="action-button"
                   >
-                    <FaMinus className="icon" />
+                    <FaMinus style={{ width: "1.25rem", height: "1.25rem", fill: "#4b5563", transition: "transform 0.3s", cursor: "pointer" }} />
                   </button>
                   <div
                     className={`${quantity ? "has-quantity" : "cero-quantity"}`}
@@ -125,7 +125,7 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
                     </span>
                   </div>
                   <button type="button" onClick={add} className="action-button">
-                    <FaPlus className="icon" />
+                  <FaPlus style={{ width: "1.25rem", height: "1.25rem", fill: "#4b5563", transition: "transform 0.3s", cursor: "pointer" }} />
                   </button>
                 </>
               )}

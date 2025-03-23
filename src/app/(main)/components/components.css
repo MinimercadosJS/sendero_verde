@@ -54,6 +54,7 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
 }
 
 .product-dialog-content .product-image-container {
@@ -62,6 +63,7 @@
 
 .product-dialog-content .product-info {
   margin-bottom: 0.75rem;
+  
 }
 
 .product-dialog-content .product-name {
@@ -138,12 +140,15 @@
 
 .product-dialog-content .product-actions .action-buttons .action-button {
   padding: 0.5rem;
+
 }
 
 .product-dialog-content .product-actions .action-buttons .action-button .icon {
   fill: #4b5563;
   transition: transform 0.3s;
   cursor: pointer;
+  
+  
 }
 
 .product-dialog-content .product-actions .action-buttons .action-button .icon:active {
@@ -221,6 +226,7 @@
   border-radius: 9999px;
   border: 2px solid var(--border-gray-200);
   padding-block: 0.5rem;
+  
   /* py-2 */
 }
 
