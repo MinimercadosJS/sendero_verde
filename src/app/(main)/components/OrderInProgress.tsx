@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { MdDeliveryDining } from "react-icons/md";
+import "./components.css";
 
 const OrderInProgress = () => {
   const dispatch = useAppDispatch();

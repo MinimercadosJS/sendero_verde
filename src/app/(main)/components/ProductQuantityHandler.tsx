@@ -1,6 +1,7 @@
 import { useAppDispatch } from "@/lib/redux/hooks"
 import { addItem, removeItem } from "@/lib/redux/reducers/cart"
 import { FaMinus, FaPlus, FaRegTrashCan } from "react-icons/fa6"
+import "./components.css";
 
 const ProductQuantityHandler = ({quantity, barcode}: {quantity: number, barcode: string}) => {
     const dispatch = useAppDispatch()

@@ -1,0 +1,19 @@
+
+/* ----------------- Loading ------------------- */
+
+.loading-container {
+    position: absolute; /* inset-0 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex; /* flex */
+    justify-content: center; /* justify-center */
+    align-items: center; /* items-center */
+    height: 24rem; /* h-96 */
+  }
+  
+  .loading-icon {
+    color: var(--text-blue-500); /* text-blue-500 */
+    font-size: 6rem; /* text-9xl */
+  }

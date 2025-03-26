@@ -7,7 +7,7 @@ import { BsCart4 } from "react-icons/bs"
 import { useState } from "react"
 import Link from "next/link"
 import useCart from "./useCart"
-
+import "./components.css";
 const Navbar = () => {
     const [openCartList, setOpenCartList] = useState(false)
     const {itemsCount} = useCart()

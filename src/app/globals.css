@@ -32,6 +32,7 @@
 @layer utilities {
   :root {
     --bg-white: #ffffff;
+    --bg-gray-300: #d1d5db;
     --bg-green-200: #b9f8cf;
     --bg-green-500: #22c55e;
     --bg-blue: #184ca75a; 
@@ -49,6 +50,7 @@
     --blue-900: #1e3a8a;
     --blue-950: 23 37 84;
     --green-600: #16a34a;
+    --text-gray-400: #99a1af;  
     --text-gray-500: #6b7280;
     --text-gray-600: #4b5563;
     --text-gray-700: #364153;
@@ -57,7 +59,9 @@
     --text-slate-500: #64748b;
     --text-slate-600: #45556c;
     --text-slate-800: #1d293d;
+    --text-red-500: #fb2c36 ;
     --text-red-600: #dc2626;
+    --text-blue-500: #3b82f6;
     --text-blue-600: #155dfc;
     --text-blue-700: #0d2b6b;
 
