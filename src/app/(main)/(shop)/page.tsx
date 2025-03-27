@@ -10,7 +10,7 @@ export const revalidate = 14400;
 
 export default function Home() {
   return (
-    <div className="overflow-hidden">
+    <div className="home">
       {/* <div className="w-full flex flex-wrap gap-5 justify-center mb-10 ">
         <CategoryCard category="alimentos básicos" ><CanastaFamiliarIcon /></CategoryCard>
         <CategoryCard category="bebidas" ><BebidasIcon /></CategoryCard>

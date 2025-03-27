@@ -10,6 +10,7 @@ import { Category } from "@/model/product";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
+import "./category.css"
 
 const SubcategorySelector = ({
   category = "alimentos básicos",
@@ -24,7 +25,7 @@ const SubcategorySelector = ({
     : "Filtrar";
 
   return (
-    <div className="relative">
+    <div className="subcategory-container">
       <button className="mx-auto group peer flex items-center gap-3 font-medium text-green-600 focus:text-green-700 sm:text-lg md:text-xl lg:text-2xl">
         <IoIosArrowDown className="transition duration-200 group-focus:rotate-180" />
         <span className="ml-auto">{decodedSubcategory}</span>

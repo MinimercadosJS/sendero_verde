@@ -1,0 +1,30 @@
+.link-back {
+    display: flex; /* Contenedor flex */
+    align-items: center; /* Alineación vertical centrada */
+    justify-content: center; /* Alineación horizontal centrada */
+    gap: 0.25rem; /* Espaciado entre elementos */
+    color: var(--green-600); /* Verde */
+    font-size: 1rem; /* Tamaño de fuente base */
+
+    /* Tamaños de fuente para diferentes pantallas */
+    @media (min-width: 640px) {
+        font-size: 1.125rem; /* sm:text-lg (18px) */
+    }
+    @media (min-width: 768px) {
+        font-size: 1.25rem; /* md:text-xl (20px) */
+    }
+    @media (min-width: 1024px) {
+        font-size: 1.5rem; /* lg:text-2xl (24px) */
+    }
+}
+
+.products-grid {
+    display: grid; /* Contenedor grid */
+    width: 100%; /* Ancho completo */
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); /* Columnas dinámicas */
+    place-items: center; /* Centrar elementos en ambas direcciones */
+    gap: 1.25rem; /* Espaciado entre elementos */
+    padding: 0.5rem; /* Padding horizontal */
+    padding-top: 2.5rem; /* Padding superior */
+    padding-bottom: 2.5rem; /* Padding inferior */
+}
