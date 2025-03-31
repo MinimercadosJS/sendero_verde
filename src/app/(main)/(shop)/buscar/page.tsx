@@ -12,7 +12,7 @@ const page = () => {
     <div>
       <Link
         href="/"
-        className="flex items-center justify-center gap-1 text-green-600 sm:text-lg md:text-xl lg:text-2xl"
+        className="link-back"
       >
         <IoIosArrowBack /> Inicio
       </Link>
@@ -39,7 +39,7 @@ const Products = () => {
   }, [query]);
 
   return (
-    <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] place-items-center gap-5 p-2 py-10">
+    <div className="products-grid">
       {products &&
         Array.isArray(products) &&
         products.map((product, key) => (
@@ -49,3 +49,5 @@ const Products = () => {
   );
 };
 export default page;
+
+

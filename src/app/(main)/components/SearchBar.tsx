@@ -106,7 +106,7 @@ const ProductListItem = ({ product }: { product: Product }) => {
                     <span >{measure}</span>
                     {stockStatus === 'out' && <span id="out-of-stock">Agotado</span>}
                 </div>
-                <b className="mx-2 text-nowrap text-sm">
+                <b id='price'>
                     {formatPrice(price)}
                 </b>
             </div>
