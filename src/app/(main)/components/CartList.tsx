@@ -9,7 +9,9 @@ import { Dispatch, SetStateAction } from "react";
 import { CgClose } from "react-icons/cg";
 import useCart from "./useCart";
 import { BiArrowBack } from "react-icons/bi";
-import dynamic from "next/dynamic"; 
+import dynamic from "next/dynamic";
+import "./components.css";
+
 
 const LottieAnimation = dynamic(
   () => import("@/components/LottieAddToCartAnimation"),
@@ -27,54 +29,54 @@ const CartList = ({ openCartList, setOpenCartList }: props) => {
     <>
       {openCartList && (
         <div
-          className="absolute inset-0 backdrop-blur-xs"
+          className="cart-backdrop"
           onClick={() => setOpenCartList(false)}
         />
       )}
 
       <div
-        className={`${openCartList ? "openCart" : "closeCart"} z-20 flex flex-col place-items-center items-center bg-gray-50`}
+        className={`${openCartList ? "openCart" : "closeCart"} cart-list`}
         id="cartList"
       >
-        <div className="flex w-full justify-between border-b px-3 py-1 font-semibold text-gray-600">
+        <div className="cart-list-header">
           <span>Tu canasta</span>
           <button
-            className="flex items-center gap-2 font-normal"
+
             onClick={() => setOpenCartList(false)}
           >
             Cerrar <CgClose />
           </button>
         </div>
         {itemsCount === 0 ? (
-          <div className="flex h-full w-max max-w-md flex-col items-center justify-evenly">
+          <div className="cart-list-empty">
             <span>Tu canasta esta vacía</span>
-            <figure className="w-full min-w-10">
+            <figure>
               <LottieAnimation />
             </figure>
             <button
-              className="flex items-center gap-3 text-blue-600"
               onClick={() => setOpenCartList(false)}
             >
-              <BiArrowBack className="rotate-90" /> Añade productos
+              <BiArrowBack
+                className="rotate"
+              /> Añade productos
             </button>
           </div>
         ) : (
           <>
-            <div className="flex w-full grow flex-col overflow-auto">
+            <div className="cart-list-items">
               {cartList.map((product) => (
                 <ProductListItem product={product} key={product.barcode} />
               ))}
             </div>
 
-            <div className="flex w-full items-center gap-5 p-3 text-center text-lg">
-              <span className="w-1/2 text-gray-600">
+            <div className="cart-list-footer">
+              <span>
                 Subtotal:{" "}
-                <b className="text-gray-900">{formatPrice(subtotal)}</b>
+                <b>{formatPrice(subtotal)}</b>
               </span>
               <Link
                 href="/checkout"
                 onClick={() => setOpenCartList(false)}
-                className="mx-auto w-fit self-center rounded-full bg-blue-500 px-3 py-1 font-medium text-white"
               >
                 Revisar y pedir
               </Link>
@@ -89,8 +91,8 @@ const ProductListItem = ({ product }: { product: CartProduct }) => {
   const { barcode, quantity, image, name, price } = product;
 
   return (
-    <div className="flex w-full items-center justify-between gap-5 border-y p-2">
-      <figure className="relative aspect-square w-16">
+    <div className="product-list-item">
+      <figure>
         <CldImage
           src={image}
           fill
@@ -98,10 +100,10 @@ const ProductListItem = ({ product }: { product: CartProduct }) => {
           className="object-cover"
         />
       </figure>
-      <div className="flex w-60 grow flex-col">
+      <div className="product-info">
         <span>{name}</span>
-        <span className="text-xs text-gray-600">{formatPrice(price)} c/u</span>
-        <span className="font-semibold">{formatPrice(price * quantity)}</span>
+        <span className="product-price">{formatPrice(price)} c/u</span>
+        <span className="product-total">{formatPrice(price * quantity)}</span>
       </div>
       <ProductQuantityHandler barcode={barcode} quantity={quantity} />
     </div>

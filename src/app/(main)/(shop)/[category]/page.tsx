@@ -2,6 +2,7 @@ import { getProductsByCategory } from "@/lib/mongo/products";
 import { Category } from "@/model/product";
 import { kebabToLowerCase } from "@/utils/functions";
 import ProductCard from "../components/ProductCard";
+import './category.css'
 
 const CategoryPage = async ({
   params,
@@ -14,8 +15,8 @@ const CategoryPage = async ({
   const products = await getProductsByCategory(decodedCategory);
 
   return (
-    <div className="w-full">
-      <section className="grid w-full grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] place-items-center gap-5 p-2 py-10 ">
+    <div className="category-container">
+      <section>
         {products &&
           Array.isArray(products) &&
           products.map((product, key) => (

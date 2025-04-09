@@ -10,10 +10,10 @@ const mainPageLayout = async ({
 }>) => {
 
     return (
-        <main className='relative h-svh w-screen overflow-clip flex flex-col text-slate-800 bg-stone-50'>
+        <main className='main'>
             <StoreProvider>
-                <div className='relative flex grow h-view flex-col lg:flex-row'>
-                    <section className='grow h-full overflow-y-scroll contentSection z-0 pb-10'>
+                <div className='main-container'>
+                    <section className='content-section'>
                         {children}
                     </section>
                     <Basket />

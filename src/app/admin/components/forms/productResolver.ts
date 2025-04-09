@@ -12,7 +12,7 @@ export type UploadProduct = {
     image?: string; // Not required when uploading initial products
     category: Category;
     subcategory: string;
-    tags: string[] 
+    tags?: string[] 
 }
 
 const productSchema: yup.ObjectSchema<UploadProduct> = yup.object({
@@ -34,7 +34,7 @@ const productSchema: yup.ObjectSchema<UploadProduct> = yup.object({
     category: yup.mixed<Category>().oneOf([
         "alimentos básicos", "cuidado e higiene", "mecato", "licor", "aseo", "bebidas", "mascotas", "otra"
     ]).required(),
-    tags: yup.array().required()
+    tags: yup.array()
 })
 
 const isValidStep = (step: number, value?: number,) => {

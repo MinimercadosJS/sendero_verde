@@ -31,17 +31,44 @@
 
 @layer utilities {
   :root {
+    --bg-white: #ffffff;
+    --bg-white-20: #fafaf9;
+    --bg-gray-300: #d1d5db;
+    --bg-green-200: #b9f8cf;
+    --bg-green-500: #22c55e;
+    --bg-blue: #184ca75a; 
+    --bg-slate-50:#f8fafc;
+    --bg-slate-100:#f1f5f9;
     --blue-50: 239 246 255;
-    --blue-100: 219 234 254;
+    --blue-100:#dbeafe;
     --blue-200: 191 219 254;
     --blue-300: 147 197 253;
-    --blue-400: 96 165 250;
-    --blue-500: 59 130 246;
-    --blue-600: 37 99 235;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #155dfc;
     --blue-700: 29 78 216;
     --blue-800: 30 64 175;
-    --blue-900: 30 58 138;
+    --blue-900: #1e3a8a;
     --blue-950: 23 37 84;
+    --green-600: #16a34a;
+    --text-gray-400: #99a1af;  
+    --text-gray-500: #6b7280;
+    --text-gray-600: #4b5563;
+    --text-gray-700: #364153;
+    --text-gray-800: #1e2939;
+    --text-gray-900: #111827;
+    --text-slate-500: #64748b;
+    --text-slate-600: #45556c;
+    --text-slate-800: #1d293d;
+    --text-red-500: #fb2c36 ;
+    --text-red-600: #dc2626;
+    --text-blue-500: #3b82f6;
+    --text-blue-600: #155dfc;
+    --text-blue-700: #0d2b6b;
+
+    --text-green-800: #016630;
+    --border-gray-100: #f3f4f6;
+    --border-gray-200: #e5e7eb;
   }
 
   html {
@@ -59,3 +86,10 @@
     font-family: Arial, Helvetica, sans-serif;
   }
 }
+
+@supports not (height: 100svh) {
+  .h-view {
+    height: 100vh;
+  }
+}
+

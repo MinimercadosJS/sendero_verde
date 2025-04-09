@@ -7,6 +7,7 @@ import { StockStatus } from "@/model/product";
 import { revalidatePath } from "next/cache";
 import { upsertTodaysMetrics } from "./metrics";
 import { getLocalDateTime } from "@/utils/functions";
+import { sendNewOrderNotification } from "../store/notifications/delivery";
 
 let client: MongoClient;
 let db: Db;
@@ -36,12 +37,12 @@ export const setSessionId = async () => {
 
 export async function uploadOrder(order: Order) {
     const sessionId = (await cookies()).get('sessionId')?.value
-
     try {
         await init()
         const createdAt = getLocalDateTime().now.toBSON()
         const result = await orders.insertOne({ sessionId: sessionId, createdAt, ...order })
         result.acknowledged && revalidatePath('/api/orders')
+        await sendNewOrderNotification(order.deliveryAddress, result.insertedId.toString())
         return JSON.stringify(result)
     } catch (error: any) {
         console.log(error);
