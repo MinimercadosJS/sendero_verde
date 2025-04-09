@@ -19,14 +19,14 @@ export const baseProductSchema = z.object({//+
 
 export const productSchema = baseProductSchema.extend({
     searchString: z.string().optional(),
-    costPrice: z.number(),
+    cost: z.number(),
     price: z.number().step(50),
     measure: z.string(),
     stockStatus: z.enum(['low', 'available', 'out']),
     stock: z.number().optional()
 })
 
-export const productFromAdminSchema = productSchema.pick({ barcode: true, name: true, measure: true, brand: true, price: true, costPrice: true })
+export const productFromAdminSchema = productSchema.pick({ barcode: true, name: true, measure: true, brand: true, price: true, cost: true })
 
 export type StockStatus = 'low' | 'available' | 'out';
 export type Category = typeof categories[number];

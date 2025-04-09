@@ -5,7 +5,7 @@ export type UploadProduct = {
     barcode: string;
     name: string;
     measure: string;
-    costPrice: number;
+    cost: number;
     price: number;
     brand: Brand | string;
     description?: string;
@@ -19,7 +19,7 @@ const productSchema: yup.ObjectSchema<UploadProduct> = yup.object({
     barcode: yup.string().required("Ingresa el código de barras del producto"),
     name: yup.string().required("Por favor ingresa el nombre del producto"),
     measure: yup.string().required(),
-    costPrice: yup.number().typeError("Ingresa el costo del producto").required(),
+    cost: yup.number().typeError("Ingresa el costo del producto").required(),
     price: yup.number().min(50, "Ingresa un valor mayor a $ 50").test(
         'is-valid-step',
         'El precio debe ser múltiplo de 50',

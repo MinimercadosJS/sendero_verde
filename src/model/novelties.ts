@@ -4,7 +4,7 @@ export const NewProductReportSchema = z.object({
     barcode: z.string(),
     name: z.string(),
     measure: z.string(),
-    costPrice: z.number(),
+    cost: z.number(),
     brand: z.string(),
 })
 export const PendingValidationReportSchema = z.object({

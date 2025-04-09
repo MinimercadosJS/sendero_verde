@@ -18,7 +18,7 @@ const CostPriceInput = () => {
   } = useFormContext<UploadProduct>();
   const [value, setValue] = useState("");
   const valid =
-    getFieldState("costPrice").isDirty && !getFieldState("costPrice").invalid;
+    getFieldState("cost").isDirty && !getFieldState("cost").invalid;
 
   const onInput: ChangeEventHandler<HTMLInputElement> = (e) => {
     const number = Number(e.target.value);
@@ -33,38 +33,38 @@ const CostPriceInput = () => {
     e.currentTarget.blur();
   };
   const onBlur = async () => {
-    await trigger("costPrice");
+    await trigger("cost");
   };
 
   return (
     <div className="input-group relative flex flex-col pb-4">
       <label
-        htmlFor="costPrice"
+        htmlFor="cost"
         className="text-sm font-semibold text-gray-600"
       >
         Costo
       </label>
 
       <input
-        id="costPrice"
+        id="cost"
         type="number"
         inputMode="numeric"
         onInput={onInput}
         onKeyDown={handleClickEnter}
-        {...register("costPrice", {
+        {...register("cost", {
           onBlur: onBlur,
-          onChange: () => trigger("costPrice"),
+          onChange: () => trigger("cost"),
         })}
-        className={`${errors["costPrice"] && "input-invalid"} ${valid && "input-valid"} input peer flex justify-between`}
+        className={`${errors["cost"] && "input-invalid"} ${valid && "input-valid"} input peer flex justify-between`}
         required
       />
       <span className="absolute right-20 top-0 text-green-600 peer-invalid:text-red-500">
         {value}
       </span>
 
-      {errors["costPrice"] && (
+      {errors["cost"] && (
         <span className="absolute bottom-0 text-xs font-semibold text-red-500">
-          {errors["costPrice"]?.message}
+          {errors["cost"]?.message}
         </span>
       )}
     </div>

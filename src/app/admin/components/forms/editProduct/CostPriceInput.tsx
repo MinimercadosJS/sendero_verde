@@ -5,7 +5,7 @@ import { Product } from '@/model/product'
 const CostPriceInput = () => {
     const { register, formState: { errors }, getFieldState, trigger } = useFormContext<Product>()
     const [value, setValue] = useState("");
-    const valid = getFieldState("costPrice").isDirty && !getFieldState("costPrice").invalid
+    const valid = getFieldState("cost").isDirty && !getFieldState("cost").invalid
 
     const onInput: ChangeEventHandler<HTMLInputElement> = (e) => {
         const number = Number(e.target.value)
@@ -21,22 +21,22 @@ const CostPriceInput = () => {
     return (
 
         <div className="relative input-group pb-4 flex flex-col ">
-            <label htmlFor="costPrice" className='text-sm font-semibold text-gray-600'>Costo</label>
+            <label htmlFor="cost" className='text-sm font-semibold text-gray-600'>Costo</label>
 
             <input
-                id="costPrice"
+                id="cost"
                 type='number'
                 inputMode='numeric'
                 onInput={onInput}
                 onKeyDown={handleClickEnter}
-                {...register("costPrice", { onChange: () => trigger("costPrice") })}
+                {...register("cost", { onChange: () => trigger("cost") })}
                 min={50}
-                className={`${errors["costPrice"] && "input-invalid"} ${valid && "input-valid"} input flex justify-between peer`} required
+                className={`${errors["cost"] && "input-invalid"} ${valid && "input-valid"} input flex justify-between peer`} required
             />
             <span className='absolute right-20 top-0 text-green-600 peer-invalid:text-red-500'>{value}</span>
 
 
-            {errors["costPrice"] && <span className="absolute bottom-0 text-xs font-semibold text-red-500">{errors["costPrice"]?.message}</span>}
+            {errors["cost"] && <span className="absolute bottom-0 text-xs font-semibold text-red-500">{errors["cost"]?.message}</span>}
         </div>
 
     )
