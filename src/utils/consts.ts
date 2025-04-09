@@ -171,7 +171,7 @@ const productFiller: Product = {
   barcode: 'nobarcode',
   name: '',
   price: 0,
-  costPrice: 0,
+  cost: 0,
   image: 'minimarket/no-image',
   measure: '',
   category: 'otra',
