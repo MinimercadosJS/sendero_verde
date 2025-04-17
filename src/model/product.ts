@@ -21,6 +21,7 @@ export const productSchema = baseProductSchema.extend({
     searchString: z.string().optional(),
     cost: z.number(),
     price: z.number().step(50),
+    costPrice: z.number().step(50).optional(),
     measure: z.string(),
     stockStatus: z.enum(['low', 'available', 'out']),
     stock: z.number().optional()

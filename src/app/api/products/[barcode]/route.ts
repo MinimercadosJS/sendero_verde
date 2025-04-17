@@ -8,14 +8,14 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const { barcode } = await params
     try {
         const product = await findByBarcode(barcode)
-        if (!product) return NextResponse.json('Product not found', {status: 404})
+        if (!product) return NextResponse.json('Product not found', { status: 404 })
         return NextResponse.json(product, { status: 200 })
     } catch {
         return NextResponse.json({ error: 'Product not found' }, { status: 404 })
     }
 }
 
-const editableProduct = productSchema.pick({name: true,measure: true, stockStatus: true, price: true, cost: true }).partial().strict()
+const editableProduct = productSchema.pick({ name: true, measure: true, stockStatus: true, price: true, cost: true, costPrice: true }).partial().strict()
 type EditableProduct = z.infer<typeof editableProduct>
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ barcode: string }> }) {
@@ -27,10 +27,10 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 
         const validBody = editableProduct.safeParse(body)
         if (!validBody.success) return NextResponse.json(validBody.error.formErrors, { status: 400 })
-        if (body.stockStatus !== undefined) {await updateOrdersProducts(barcode, body.stockStatus) }
+        if (body.stockStatus !== undefined) { await updateOrdersProducts(barcode, body.stockStatus) }
 
         const res = await updateProductValues(barcode, body)
- 
+
         return NextResponse.json(res, { status: res.success ? 200 : 400 })
     } catch (error: any) {
 
