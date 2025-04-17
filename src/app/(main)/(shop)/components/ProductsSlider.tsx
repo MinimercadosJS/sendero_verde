@@ -10,6 +10,7 @@ import BebidasIcon from "@/assets/icons/categories/bebidas";
 import MecatoIcon from "@/assets/icons/categories/mecato";
 import MascotasIcon from "@/assets/icons/categories/mascotas";
 import LicorIcon from "@/assets/icons/categories/licor";
+import "./components.css";
 
 const ProductsSlider = async ({
   title,
@@ -28,25 +29,22 @@ const ProductsSlider = async ({
   };
 
   return (
-    <section className="my-10">
-      <div className="flex items-center justify-between px-5">
-        <h2 className="pb-0 text-xl font-semibold text-gray-500">{title}</h2>
+    <section className="products-slider-section">
+      <div className="products-slider-header">
+        <h2 className="products-slider-title">{title}</h2>
         <Link
           href={`/${toKebabCase(category)}`}
-          className="flex flex-row items-center text-green-600"
+          className="products-slider-link"
         >
           Ver más <IoIosArrowForward />{" "}
         </Link>
       </div>
-      <div className="w-full overflow-x-auto overflow-y-hidden px-5">
-        <div
-          className="grid w-fit grid-flow-col place-items-center gap-6 py-5 pr-1"
-          id="products-slider"
-        >
+      <div className="products-slider-container">
+        <div className="products-slider-grid" id="products-slider">
           {Icon[category] && (
             <Link
               href={`/${toKebabCase(category)}`}
-              className="h-28 w-28 items-center text-green-600"
+              className="products-slider-icon-link"
             >
               {Icon[category]}
             </Link>
@@ -59,9 +57,9 @@ const ProductsSlider = async ({
 
           <Link
             href={`/${toKebabCase(category)}`}
-            className="flex h-full w-32 items-center justify-center text-xl text-gray-500"
+            className="products-slider-more-link"
           >
-            <span className="text-center">Ver más</span>
+            <span className="products-slider-more-text">Ver más</span>
           </Link>
         </div>
       </div>

@@ -15,7 +15,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     }
 }
 
-const editableProduct = productSchema.pick({name: true,measure: true, stockStatus: true, price: true, costPrice: true }).partial().strict()
+const editableProduct = productSchema.pick({name: true,measure: true, stockStatus: true, price: true, cost: true }).partial().strict()
 type EditableProduct = z.infer<typeof editableProduct>
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ barcode: string }> }) {

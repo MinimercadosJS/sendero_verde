@@ -10,14 +10,14 @@ export const revalidate = 14400;
 
 export default function Home() {
   return (
-    <div className="overflow-hidden">
+    <div className="home">
       {/* <div className="w-full flex flex-wrap gap-5 justify-center mb-10 ">
         <CategoryCard category="alimentos básicos" ><CanastaFamiliarIcon /></CategoryCard>
         <CategoryCard category="bebidas" ><BebidasIcon /></CategoryCard>
         <CategoryCard category="mecato"> <MecatoIcon /></CategoryCard>
         <CategoryCard category="licor"> <LicorIcon /></CategoryCard>
         <CategoryCard category="mascotas"> <MascotasIcon /></CategoryCard>
-        
+
       </div> */}
 
       {/* <CategoryCard
@@ -25,7 +25,6 @@ export default function Home() {
         children={<CanastaFamiliarIcon />}
       /> */}
       <ProductsSlider title="Alimentos básicos" category="alimentos básicos" />
-
       {/* <CategoryCard category="mecato" children={<MecatoIcon />} />  */}
       <ProductsSlider title="Mecato" category="mecato" />
       <ProductsSlider title="Bebidas" category="bebidas" />

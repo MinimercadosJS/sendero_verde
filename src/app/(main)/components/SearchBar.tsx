@@ -9,6 +9,7 @@ import { IoIosClose, IoIosSearch } from "react-icons/io"
 import ProductDialogCard from "./ProductDialogCard"
 import clsx from "clsx"
 import Link from "next/link"
+import "./components.css"
 
 const SearchBar = () => {
     const [results, setResults] = useState<Product[]>([])
@@ -48,9 +49,8 @@ const SearchBar = () => {
     }
 
     return (
-        <div className={clsx("h-fit bg-white relative flex flex-row grow max-w-xl z-50 rounded-full border-gray-200 border-2 py-2", animate && "animate-searchbar")} >
+        <div className={clsx("search-bar", animate && "animate-searchbar")} >
             <input
-                className="w-full outline-hidden px-5 bg-transparent text-2xl"
                 placeholder="Buscar producto"
                 value={inputValue}
                 onChange={(e) => {setInputValue(e.target.value); setQuery(e.target.value)}}
@@ -58,20 +58,20 @@ const SearchBar = () => {
             />
             {
                 results.length > 0 &&
-                <ul className="absolute top-12 left-0 md:absolute w-full shadow-md max-h-96 overflow-scroll" >
+                <ul>
                     {results.map((result) => (
                         <ProductListItem key={result.barcode} product={result} />
                     ))}
-                  { results.length >= 15 && <li className="bg-white">
+                  { results.length >= 15 && <li className="see-more">
                         <Link href={`/buscar?query=${query}`} onClick={()=> resetSearch()}>
-                            <span className="text-center block text-blue-600 py-3">Ver más resultados</span>
+                            <span>Ver más resultados</span>
                         </Link>
                     </li>}
                 </ul>
             }
             {
                 results.length < 1 && inputValue.length > 0 && (
-                    <div className="absolute bg-slate-50 top-12 left-0 md:absolute   w-full shadow-md p-4 text-center text-lg">
+                    <div className="no-results">
                     {
                         loading ? <span>Buscando...</span> :
                         <span> Lo sentimos, no tenemos resultados para esta búsqueda</span>
@@ -80,7 +80,7 @@ const SearchBar = () => {
                 )
             } 
             
-            <div className="text-4xl px-3 text-slate-600">
+            <div className="icon">
 
                 {
                     query.length === 0 ? <IoIosSearch /> : <IoIosClose onClick={resetSearch} />
@@ -93,20 +93,20 @@ const SearchBar = () => {
 const ProductListItem = ({ product }: { product: Product }) => {
     const { name, brand, measure, price, image, stockStatus } = product;
     return (
-        <li className="relative max-w-full w-full odd:bg-slate-100 even:bg-slate-50">
+        <li id="product-list-item">
             {stockStatus !== 'out' && <ProductDialogCard product={product} />}
             <ProductDialogCard product={product} />
-            <div className="flex size-full items-center">
-                <div className="min-w-16 md:min-w-20">
+            <div id="product-info">
+                <div id="image">
                     <ProductImage src={image} alt={name} />
                 </div>
-                <div className="*:mx-2 items-baseline grow max-w-full ">
-                    <b className="line-clamp-1">{name}</b>
-                    <span className="text-sm">{brand}</span>
-                    <span className="text-sm">{measure}</span>
-                    {stockStatus === 'out' && <span className="text-red-600 font-semibold text-sm">Agotado</span>}
+                <div id="details">
+                    <b>{name}</b>
+                    <span >{brand}</span>
+                    <span >{measure}</span>
+                    {stockStatus === 'out' && <span id="out-of-stock">Agotado</span>}
                 </div>
-                <b className="mx-2 text-nowrap text-sm">
+                <b id='price'>
                     {formatPrice(price)}
                 </b>
             </div>

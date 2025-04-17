@@ -85,26 +85,26 @@ const CheckoutForm = () => {
       {orderConfirmed ? (
         <ConfirmedOrder order={orderConfirmed} />
       ) : itemsCount === 0 ? (
-        <div className="my-5 text-center font-light">
+        <div className="empty-cart">
           <h1>Tu carrito esta vació</h1>
-          <span className="text-blue-500">
+          <span>
             Te dirigiremos a la pagina principal...
           </span>
         </div>
       ) : (
         <form
-          className="mx-auto flex size-full flex-col items-center justify-evenly px-5 *:my-3"
+          className="form"
           onSubmit={handleSubmit(validateAndUpload)}
         >
-          <h1 className="text-center font-medium text-gray-600">
+          <h1>
             Datos de tu pedido
           </h1>
           <FormProvider {...form}>
             <div
-              className="w-full max-w-lg grow overflow-hidden scroll-smooth"
+              className="form-container"
               ref={formContainer}
             >
-              <div className="relative flex size-full w-full snap-center flex-col items-center justify-between *:w-full md:flex-row">
+              <div className="input-container">
                 <div>
                   <Input
                     label="Nombre"
@@ -116,7 +116,7 @@ const CheckoutForm = () => {
                     setStage={setStage}
                   />
                   {stage >= 1 && <UnitSelector setStage={setStage} />}
-                  <div className="flex w-full gap-3">
+                  <div className="location">
                     <Input
                       label="Torre"
                       name="building"
@@ -149,8 +149,8 @@ const CheckoutForm = () => {
                 </div>
               </div>
               {stage >= 4 && (
-                <div className="my-5 grid snap-center place-items-center gap-5">
-                  <div className="flex gap-3 text-sm">
+                <div className="order-summary">
+                  <div className="subtotal">
                     <span>
                       Subtotal: <b>{formatPrice(subtotal)}</b>
                     </span>
@@ -159,7 +159,7 @@ const CheckoutForm = () => {
                       Domicilio: <b>{formatPrice(deliveryFee)}</b>
                     </span>
                   </div>
-                  <div className="text-center text-xl">
+                  <div className="total">
                     <h2>Total:</h2>
                     <b>{formatPrice(subtotal + deliveryFee)}</b>
                   </div>
@@ -168,7 +168,7 @@ const CheckoutForm = () => {
             </div>
             {stage < 4 && (
               <button
-                className="rounded-full bg-white px-5 py-2 text-lg shadow-xs"
+                className="button-rounded"
                 type="button"
               >
                 Siguiente
@@ -178,13 +178,13 @@ const CheckoutForm = () => {
             <button
               type="submit"
               style={stage >= 4 ? { opacity: 100 } : { opacity: 0 }}
-              className="my-3 rounded-full bg-blue-500 px-5 py-2 text-xl text-white disabled:bg-gray-300"
+              className="button-submit"
               disabled={!formState.isValid || formState.isSubmitting}
               autoFocus
             >
               Hacer pedido
             </button>
-            <span className="flex flex-col text-center">
+            <span className="privacy">
               <span>
                 Tus datos personales serán utilizados unicamente para coordinar
                 y gestionar tu orden.
@@ -233,7 +233,7 @@ const Input = ({
   return (
     <>
       {!hidden && (
-        <label className="relative mb-4 flex w-full flex-col">
+        <label className= "label">
           <input
             onKeyDown={(e) => e.key === "Enter" && e.currentTarget.blur()}
             {...register(name, {
@@ -244,10 +244,10 @@ const Input = ({
             {...props}
             className={`${errors[name] && "input-invalid"} ${valid && "input-valid"} input`}
           />
-          <div className="flex w-full justify-between">
-            <span className="font-medium text-gray-400">{label}</span>
+          <div className="validation">
+            <span className="input-label">{label}</span>
             {errors[name] && (
-              <span className="bottom-0 text-xs text-red-500">
+              <span className="input-label-empty">
                 {errors[name].message}
               </span>
             )}
@@ -278,7 +278,7 @@ const UnitSelector = ({
   };
 
   return (
-    <label htmlFor="" className="relative mb-4 flex w-full flex-col">
+    <label htmlFor="" className="unit-selector-label">
       <select
         {...register(name, {
           onChange: () => {
@@ -290,16 +290,16 @@ const UnitSelector = ({
         defaultValue=""
       >
         <option value="" disabled>
-          En que unidad vives?
+          En qué unidad vives?
         </option>
         <option value="sendero">Sendero Verde</option>
         <option value="villa">Villa Verde</option>
         <option value="bulevar">Bulevar Verde</option>
       </select>
       <div className="flex w-full justify-between">
-        <span className="font-medium text-gray-400">Unidad</span>
+        <span className="unit">Unidad</span>
         {errors[name] && (
-          <span className="bottom-0 text-xs text-red-500">
+          <span className="unit-empty">
             {errors[name].message}
           </span>
         )}

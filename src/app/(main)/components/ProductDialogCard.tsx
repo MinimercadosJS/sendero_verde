@@ -13,6 +13,7 @@ import { Product } from "@/model/product";
 import React, { MouseEventHandler, useRef, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosCloseCircleOutline } from "react-icons/io";
+import './components.css';
 
 const ProductDialogCard = ({ product }: { product: Product }) => {
   const { barcode, name, price, image, measure, brand, category, stockStatus } =
@@ -62,70 +63,69 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
   return (
     <>
       <button
-        className="absolute z-[5] size-full bg-transparent outline-1 outline-transparent focus-visible:outline-blue-600"
+        className="product-dialog-button"
         title={name}
         onClick={() => dialog.current?.showModal()}
       />
       <dialog
         ref={dialog}
-        className="productDialog"
+        className="product-dialog"
         onClick={closeDialogByBounding}
       >
         <IoIosCloseCircleOutline
           onClick={() => dialog.current?.close()}
-          className="absolute right-0 -translate-y-6 translate-x-6 fill-white text-3xl"
+          className="product-dialog-close-icon"
         />
 
-        <div className="flex h-min w-[16rem] flex-col overflow-hidden rounded-lg px-2 shadow-lg">
+        <div className="product-dialog-content">
           <div className="-z-10">
             {quantity && quantity > 0 && (
-              <div className="fixed z-10 rounded-b-md bg-green-600 px-3 text-center text-white">
+              <div className="quantity-container">
                 {`añadido${quantity > 1 ? `s: ${quantity}` : ""}`}
               </div>
             )}
-            <div className="p-5">
+            <div className="product-image-container">
               <ProductImage src={image} alt={name} />
             </div>
-            <div className="mb-3">
-              <span className="mb-1 line-clamp-3 text-lg leading-6 font-medium text-slate-800">
+            <div className="product-info">
+              <span className="product-name">
                 {name}
               </span>
-              <span className="text-slate-500">{brand}</span>
+              <span className="product-brand">{brand}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-md -z-10 text-slate-500 outline-hidden">
+            <div className="product-details">
+              <span className="product-measure">
                 {measure}
               </span>
 
-              <span className="font-semibold text-nowrap text-slate-600">
+              <span className="product-price">
                 {labelPrice}
               </span>
             </div>
           </div>
-          <div className="flex h-16 flex-col">
-            {/* <Description description={description} /> */}
-            <div className="flex w-full grow items-center justify-center gap-5 py-2 text-xl">
+          <div className="product-actions">
+            <div className="action-buttons">
               {stockStatus === "out" ? (
-                <span className="font-semibold text-red-600">Agotado</span>
+                <span className="out-of-stock">Agotado</span>
               ) : (
                 <>
                   <button
                     type="button"
                     onClick={remove}
                     disabled={!quantity}
-                    className="p-2"
+                    className="action-button"
                   >
-                    <FaMinus className="fill-gray-600 active:scale-75" />
+                    <FaMinus  style={{ width: "1.25rem", height: "1.25rem", fill: "#4b5563", transition: "transform 0.3s", cursor: "pointer" }} />
                   </button>
                   <div
-                    className={`${quantity ? "bg-green-500" : "bg-gray-400"} grid aspect-square w-7 rounded-full`}
+                    className={`${quantity ? "has-quantity" : "cero-quantity"}`}
                   >
-                    <span className="place-self-center font-mono text-xl font-semibold text-white">
+                    <span>
                       {quantity || 0}
                     </span>
                   </div>
-                  <button type="button" onClick={add} className="p-2">
-                    <FaPlus className="fill-gray-600 active:scale-75" />
+                  <button type="button" onClick={add} className="action-button">
+                  <FaPlus style={{ width: "1.25rem", height: "1.25rem", fill: "#4b5563", transition: "transform 0.3s", cursor: "pointer" }}/>
                   </button>
                 </>
               )}
@@ -137,35 +137,35 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
   );
 };
 
-const Description = ({ description }: { description: string }) => {
-  const [openDescription, setOpenDescription] = useState(false);
+// const Description = ({ description }: { description: string }) => {
+//   const [openDescription, setOpenDescription] = useState(false);
 
-  return (
-    <>
-      <button
-        type="button"
-        className="peer mx-auto mt-2 flex gap-3 py-2 text-center text-sm text-blue-500"
-        onClick={() => {
-          setOpenDescription(!openDescription);
-        }}
-      >
-        <span className="font-medium">Detalles</span>
-        <IoIosArrowDown
-          className={`${!openDescription && "rotate-180"} text-xl`}
-        />
-      </button>
-      <p
-        className="absolute top-0 right-0 -z-10 h-[calc(100%-6rem)] overflow-auto bg-white p-5"
-        style={{
-          translate: `${openDescription ? "none" : "0 100%"}`,
-          zIndex: `${openDescription ? "10" : "-10"}`,
-          transition: "translate 0.3s ease-in-out",
-        }}
-      >
-        {description}
-      </p>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <button
+//         type="button"
+//         className="peer mx-auto mt-2 flex gap-3 py-2 text-center text-sm text-blue-500"
+//         onClick={() => {
+//           setOpenDescription(!openDescription);
+//         }}
+//       >
+//         <span className="font-medium">Detalles</span>
+//         <IoIosArrowDown
+//           className={`${!openDescription && "rotate-180"} text-xl`}
+//         />
+//       </button>
+//       <p
+//         className="absolute top-0 right-0 -z-10 h-[calc(100%-6rem)] overflow-auto bg-white p-5"
+//         style={{
+//           translate: `${openDescription ? "none" : "0 100%"}`,
+//           zIndex: `${openDescription ? "10" : "-10"}`,
+//           transition: "translate 0.3s ease-in-out",
+//         }}
+//       >
+//         {description}
+//       </p>
+//     </>
+//   );
+// };
 
 export default ProductDialogCard;

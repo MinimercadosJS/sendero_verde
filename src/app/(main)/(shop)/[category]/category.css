@@ -1,0 +1,39 @@
+.subcategory-container{
+    position: relative;
+
+}
+
+.category-container{
+    width: 100%;
+
+}
+
+.category-container section {
+    display: grid; /* Contenedor grid */
+    width: 100%; /* Ancho completo */
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); /* Columnas dinámicas */
+    place-items: center; /* Centrar elementos horizontal y verticalmente */
+    gap: 1.25rem; /* Espaciado entre elementos */
+    padding: 0.5rem; /* Padding general */
+    padding-top: 2.5rem; /* Padding superior */
+    padding-bottom: 2.5rem; /* Padding inferior */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el área */
+}
+
+.loading-container {
+    position: absolute; /* Posición absoluta */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex; /* Contenedor flex */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 24rem; /* Altura fija */
+}
+
+/* Estilo para el ícono de carga */
+.loading-icon {
+    color: var(--text-blue-500); /* Azul */
+    font-size: 6rem; /* Tamaño grande */
+}

@@ -83,7 +83,7 @@ export async function findByBarcode(barcode: string) {
 }
 
 export async function uploadProduct(product: UploadProduct) {
-    const { barcode, name, price, brand, category, measure, costPrice, tags, subcategory } = product
+    const { barcode, name, price, brand, category, measure, cost, tags, subcategory } = product
     const searchString = `${name} ${brand} ${measure}`.trim().toLowerCase()
     const productPayload: OptionalId<Product> = {
         searchString,
@@ -95,7 +95,7 @@ export async function uploadProduct(product: UploadProduct) {
         measure,
         category,
         subcategory,
-        costPrice: Number(costPrice),
+        cost: Number(cost),
         price: Number(price),
         stockStatus: 'available',
         tags,
@@ -218,7 +218,7 @@ export async function updateProductValues(barcode: string, body: Partial<Product
 }
 
 export async function updateProduct(product: UploadProduct) {
-    const { barcode, name, price, description, brand, category, costPrice, image, measure, tags } = product
+    const { barcode, name, price, description, brand, category, cost, image, measure, tags } = product
     const searchString = `${name} ${brand} ${measure}`.toLowerCase()
 
     const productPayload = {
@@ -230,7 +230,7 @@ export async function updateProduct(product: UploadProduct) {
         description,
         image,
         measure,
-        costPrice,
+        cost,
         category,
         tags,
         stock: 0
