@@ -34,25 +34,25 @@ export const orderSchema = z.object({
     deliveryFee: z.number(),
     status: z.enum(['pending', 'packed', 'delivered']),
 })
-
+const deliveryAddressSchema =  z.object({
+    building: z.number(),
+    apartment: z.number(),
+    unit,
+})
 export const deliveredOrderSchema = z.object({
     customerInfo :z.object( {
         sessionId: z.string(),
         customerName: z.string(),
         customerPhone: z.string().min(10).max(15),
     }),
-    deliveryAddress: z.object({
-        building: z.number(),
-        apartment: z.number(),
-        unit,
-    }),
+    deliveryAddress: deliveryAddressSchema,
     products: z.array(orderProductSchema),
     createdAt: z.date(),
     deliveredAt: z.date(),
     subtotal: z.number(),
     deliveryFee: z.number(),
 })
-
+export type DeliveryAddress = z.infer<typeof deliveryAddressSchema>
 export type Unit = z.infer<typeof unit>
 export type Order =  z.infer<typeof orderSchema> & {_id?: ObjectId | string}
 export type DeliveredOrder = z.infer<typeof deliveredOrderSchema> & {_id?: ObjectId | string}

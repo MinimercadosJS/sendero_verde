@@ -24,7 +24,7 @@ const ProductDialogCard = ({ product }: { product: Product }) => {
     if (
       e.clientX < dialogDimensions.left ||
       e.clientX > dialogDimensions.right ||
-      e.clientY < dialogDimensions.top ||
+      e.clientY < dialogDimensions.top || 
       e.clientY > dialogDimensions.bottom
     ) {
       dialog.current?.close();

@@ -1,10 +1,10 @@
 import React from 'react'
 import type { SVGProps } from 'react';
-
+import './category.css'
 const Loading = () => {
   return (
-    <div className=" inset-0 flex justify-center items-center h-96">
-      <EosIconsThreeDotsLoading className="text-blue-500 text-9xl" />
+    <div className="loading-container">
+      <EosIconsThreeDotsLoading className="loading-icon" />
     </div>
   )
 }
