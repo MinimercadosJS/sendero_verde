@@ -1,12 +1,12 @@
 'use server'
-import { Collection, Db, MongoClient, OptionalId, SortDirection } from "mongodb";
-import clientPromise from "."
-import { BaseProduct, Category, Product, ProductFromAdmin, StockStatus } from "@/model/product";
-import { formatName, trimObject } from "@/utils/functions";
-import { revalidatePath } from "next/cache";
 import { UploadProduct } from "@/app/admin/components/forms/productResolver";
-import axios from "axios";
+import { BaseProduct, Category, Product, ProductFromAdmin, StockStatus } from "@/model/product";
 import { productFiller } from "@/utils/consts";
+import { formatName, trimObject } from "@/utils/functions";
+import axios from "axios";
+import { Collection, Db, MongoClient, OptionalId, SortDirection } from "mongodb";
+import { revalidatePath } from "next/cache";
+import clientPromise from ".";
 import { uploadNewProduct } from "../tenant/http";
 import { deleteNovelty } from "./novelties";
 
@@ -22,7 +22,8 @@ export async function init() {
         db = client.db(process.env.TENANT_ID)
         products = db.collection('products')
     } catch (error) {
-        throw new Error('Failed to stablish connection to database')
+        console.error('Failed to establish connection to database:', error);
+        throw new Error('Failed to stablish connection to database:')
     }
 }
 
@@ -137,7 +138,7 @@ export async function uploadNewFromAdmin(product: ProductFromAdmin) {
     try {
         await init()
         await uploadNewProduct(globalBody)
-        const result = await products.updateOne({barcode},{$setOnInsert: trimObject({ ...productFiller, ...product })},{upsert: true})
+        const result = await products.updateOne({ barcode }, { $setOnInsert: trimObject({ ...productFiller, ...product }) }, { upsert: true })
         await deleteNovelty("new_product", barcode)
 
         return result
@@ -151,7 +152,7 @@ export async function getProductsByCategory(category: Category) {
 
     try {
         await init()
-        const result = await products.find({ category }, { projection: { _id: 0 } }).sort({ subcategory: 1, name: 1,  measure: 1, }).toArray();
+        const result = await products.find({ category }, { projection: { _id: 0 } }).sort({ subcategory: 1, name: 1, measure: 1, }).toArray();
         return result
     } catch (error: any) {
         throw new Error(error)

@@ -1,6 +1,15 @@
 "use client";
-import "./checkout-form.css";
+import useCart from "@/app/(main)/components/useCart";
+import { setSessionId, uploadOrder } from "@/lib/mongo/orders";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
+import { CartProduct, resetCart } from "@/lib/redux/reducers/cart";
+import { addOrder } from "@/lib/redux/reducers/clientOrders";
+import { Order, OrderProduct } from "@/model/order";
+import { deliveryFees } from "@/utils/consts";
+import { camelCaseToTitleCase, formatPrice } from "@/utils/functions";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Dispatch,
   InputHTMLAttributes,
@@ -10,18 +19,9 @@ import {
   useState,
 } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import checkoutSchema, { Checkout } from "./checkoutResolver";
-import useCart from "@/app/(main)/components/useCart";
-import { camelCaseToTitleCase, formatPrice } from "@/utils/functions";
-import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
-import { Order, OrderProduct } from "@/model/order";
-import { CartProduct, resetCart } from "@/lib/redux/reducers/cart";
-import { useRouter } from "next/navigation";
 import ConfirmedOrder from "../ConfirmedOrder";
-import { setSessionId, uploadOrder } from "@/lib/mongo/orders";
-import { addOrder } from "@/lib/redux/reducers/clientOrders";
-import { deliveryFees } from "@/utils/consts";
-import Link from "next/link";
+import "./checkout-form.css";
+import checkoutSchema, { Checkout } from "./checkoutResolver";
 
 const CheckoutForm = () => {
   const dispatch = useAppDispatch();

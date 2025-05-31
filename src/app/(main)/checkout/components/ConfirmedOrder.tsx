@@ -44,7 +44,7 @@ const ConfirmedOrder = ({ order }: { order: Order | null }) => {
                 <p className="flex flex-col gap-2">
                   <span className="text-base">Ahorros Bancolombia:</span>
                   <span className="text-base font-semibold tracking-wider">
-                    609000006092
+                    60900006092
                   </span>
                 </p>
               </figure>
