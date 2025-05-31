@@ -1,10 +1,9 @@
-import { Order } from "@/model/order";
-import React from "react";
-import ProductImage from "@/components/ProductImage";
-import { formatPrice } from "@/utils/functions";
-import { WhatsappIcon } from "@/assets/icons/whatsappLogo";
-import Link from "next/link";
 import BancolombiaLogo from "@/assets/icons/BancolombiaLogo";
+import { WhatsappIcon } from "@/assets/icons/whatsappLogo";
+import ProductImage from "@/components/ProductImage";
+import { Order } from "@/model/order";
+import { formatPrice } from "@/utils/functions";
+import Link from "next/link";
 
 const ConfirmedOrder = ({ order }: { order: Order | null }) => {
   const estado = {
@@ -45,7 +44,7 @@ const ConfirmedOrder = ({ order }: { order: Order | null }) => {
                 <p className="flex flex-col gap-2">
                   <span className="text-base">Ahorros Bancolombia:</span>
                   <span className="text-base font-semibold tracking-wider">
-                    420 53959 894
+                    609000006092
                   </span>
                 </p>
               </figure>
